@@ -11,20 +11,14 @@ use App\Models\PenerimaanBarang;
 use App\Models\PengeluaranBarang;
 use Dompdf\Dompdf;
 
-
-
-
-
 class DashboardController extends Controller
 {
     private $barang;
-    private $kode_barang;
-
     public function __construct()
     {
         $this->barang = new Barangs();
-        $this->kode_barang = new KodeBarang();
     }
+    
     public function dashboard()
     {
         $data = $this->barang->all();

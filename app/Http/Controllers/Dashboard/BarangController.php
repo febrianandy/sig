@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Barangs;
-use App\Models\KodeBarang;
 use App\Models\PenerimaanBarang;
 use App\Models\PengeluaranBarang;
 
@@ -22,30 +21,6 @@ class BarangController extends Controller
     {
         $data = $this->barang->all();
         return view('barang.index', ['data' => $data]);
-    }
-
-    public function postKodeBarang(Request $request)
-    {
-        // Validate the request data
-        $validatedData = $request->validate([
-            'kode_barang' => 'required|unique:kode_barangs',
-            'kategori' => 'required'
-        ]);
-
-        // Insert the product code into the database
-        try {
-            $product = new KodeBarang();
-            $product->kode_barang = $validatedData['kode_barang'];
-            $product->kategori = $validatedData['kategori'];
-            $product->save();
-            // Set success message
-            $message = 'Product code inserted successfully';
-        } catch (\Exception $e) {
-            // Set error message
-            $message = 'Error inserting product code: ' . $e->getMessage();
-        }
-        // Flash the message to the session
-        return back()->with('pesanKodeBarang', $message);
     }
 
     public function postBarang(Request $request)
@@ -156,11 +131,8 @@ class BarangController extends Controller
     {
         $barang = Barangs::find($id);
         if (!$barang) {
-            // Handle the case where the barang is not found
-            // You can return an error message or redirect as needed
             abort(404, 'Barang not found');
         }
-
         return view('pages/barang/dashboard_barang_edit', ['title' => "edit barang", 'barang' => $barang]);
     }
 

@@ -1,7 +1,7 @@
 <div class="sidebar">
   <div class="sidebar-wrapper">
     <div class="logo text-center">
-      <img src="/assets/img/GBlogo.png" alt="" height="200">
+      <img src="/assets/img/GBlogo.png" alt="" height="150">
       <a href="/dashboard" class="simple-text">
         INVENTORY GUDANG
       </a>

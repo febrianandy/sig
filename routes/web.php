@@ -22,6 +22,7 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function () {
+
     Route::controller(DashboardController::class)->group(function () {
         Route::get('/dashboard', 'dashboard');
         Route::get('/dashboard-penerimaan-barang', 'penerimaan_barang');
@@ -35,14 +36,14 @@ Route::middleware('auth')->group(function () {
         Route::post('/dashboard-logout', 'logout')->name('logout');
     });
 
-    Route::controller(BarangController::class)->group(function(){
-        Route::post("/dashboard-kategori",'postKodeBarang');
-        Route::post("/dashboard-input-barang",'postBarang');
-        Route::post("/dashboard-penerimaan-barang",'postPenerimaanBarang');
-        Route::post("/dashboard-pengeluaran-barang",'postPengeluaranBarang');
-        Route::get("/dashboard-barang-edit/{id}",'editBarang');
-        Route::delete("/dashboard-barang-delete/{id}",'deleteBarang');
-        Route::put("/dashboard-barang-edit/{id}",'aksiEditBarang');
+    Route::controller(BarangController::class)->group(function () {
+        Route::post("/dashboard-kategori", 'postKodeBarang');
+        Route::post("/dashboard-input-barang", 'postBarang');
+        Route::post("/dashboard-penerimaan-barang", 'postPenerimaanBarang');
+        Route::post("/dashboard-pengeluaran-barang", 'postPengeluaranBarang');
+        Route::get("/dashboard-barang-edit/{id}", 'editBarang');
+        Route::delete("/dashboard-barang-delete/{id}", 'deleteBarang');
+        Route::put("/dashboard-barang-edit/{id}", 'aksiEditBarang');
     });
 });
 

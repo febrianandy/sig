@@ -1,13 +1,8 @@
 @include('partials.header')
-
 <div class="wrapper">
-
   @include('components.sidebar')
-
   <div class="main-panel">
-
     @include('components.topbar')
-
     <div class="content">
       <div class="container-fluid">
         <div class="row">
@@ -37,7 +32,6 @@
                 <small id="passwordHelp" class="text-danger">
                   {{ $message }}
                 </small>
-
                 @enderror
               </div>
               <div class="form-group">
@@ -48,7 +42,6 @@
                 <small id="passwordHelp" class="text-danger">
                   {{ $message }}
                 </small>
-
                 @enderror
               </div>
               <div class="form-group">
@@ -59,7 +52,6 @@
                 <small id="passwordHelp" class="text-danger">
                   {{ $message }}
                 </small>
-
                 @enderror
               </div>
               <div class="form-group">
@@ -81,7 +73,6 @@
                 <small id="passwordHelp" class="text-danger">
                   {{ $message }}
                 </small>
-
                 @enderror
               </div>
               <div class="form-group">
@@ -92,7 +83,6 @@
                 <small id="passwordHelp" class="text-danger">
                   {{ $message }}
                 </small>
-
                 @enderror
               </div>
               <div class="form-group">

@@ -1,13 +1,9 @@
 @include('partials.header')
 <x-modal/>
 <div class="wrapper">
-
   @include('components.sidebar')
-
   <div class="main-panel">
-
     @include('components.topbar')
-
     <div class="content">
       <div class="container-fluid">
         <div class="row">
@@ -32,7 +28,7 @@
               <div class="form-group">
                 <label for="barang-name">Nama Barang:</label>
                 <input type="text" class="form-control" id="barang-name" name="nama_barang"
-                  value="{{ old('nama_barang') }}" placeholder="Enter the name of the item">
+                  value="{{ $barang->nama_barang }}" placeholder="Enter the name of the item">
                 @error('nama_barang')
                 <small id="passwordHelp" class="text-danger">
                   {{ $message }}
@@ -43,7 +39,7 @@
               <div class="form-group">
                 <label for="category">Kode barang:</label>
                 <input type="text" class="form-control" id="barang-name" name="kode_barang"
-                  value="{{ old('kode_barang') }}" placeholder="Enter the name of the item">
+                  value="{{ $barang->kode_barang }}" placeholder="Enter the name of the item">
                 @error('kode_barang')
                 <small id="passwordHelp" class="text-danger">
                   {{ $message }}
@@ -54,7 +50,7 @@
               <div class="form-group">
                 <label for="barang-deskripsi">Deskripsi:</label>
                 <input type="text" class="form-control" id="barang-price" min="0" name="deskripsi"
-                  value="{{ old('deskripsi') }}" placeholder="Enter the price of the item">
+                  value="{{ $barang->deskripsi }}" placeholder="Enter the price of the item">
                 @error('deskripsi')
                 <small id="passwordHelp" class="text-danger">
                   {{ $message }}
@@ -65,7 +61,7 @@
               <div class="form-group">
                 <label for="barang-price">Harga:</label>
                 <input type="number" class="form-control" id="barang-price" min="0" name="harga"
-                  value="{{ old('harga') }}" placeholder="Enter the price of the item">
+                  value="{{ $barang->harga }}" placeholder="Enter the price of the item">
                 @error('harga')
                 <small id="passwordHelp" class="text-danger">
                   {{ $message }}
@@ -76,7 +72,7 @@
               <div class="form-group">
                 <label for="barang-deskripsi">Kategori:</label>
                 <input type="text" class="form-control" id="barang-price" min="0" name="kategori"
-                  value="{{ old('kategori') }}" placeholder="Enter the price of the item">
+                  value="{{ $barang->kategori }}" placeholder="Enter the price of the item">
                 @error('kategori')
                 <small id="passwordHelp" class="text-danger">
                   {{ $message }}
@@ -87,7 +83,7 @@
               <div class="form-group">
                 <label for="barang-deskripsi">Satuan:</label>
                 <input type="text" class="form-control" id="barang-price" min="0" name="satuan"
-                  value="{{ old('satuan') }}" placeholder="Enter the price of the item">
+                  value="{{ $barang->satuan }}" placeholder="Enter the price of the item">
                 @error('satuan')
                 <small id="passwordHelp" class="text-danger">
                   {{ $message }}
@@ -97,8 +93,8 @@
               </div>
               <div class="form-group">
                 <label for="barang-quantity">Stok:</label>
-                <input type="number" class="form-control" id="barang_quantity_pack" name="stock" min="0"
-                  value="{{ old('stock') }}" placeholder="Enter the quantity of the item">
+                <input type="number" class="form-control" name="stock" 
+                  value="{{ $barang->stock }}" placeholder="Enter the quantity of the item">
                 @error('stock')
                 <small id="passwordHelp" class="text-danger">
                   {{ $message }}

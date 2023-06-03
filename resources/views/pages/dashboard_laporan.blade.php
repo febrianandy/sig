@@ -1,13 +1,8 @@
 @include('partials.header')
-
 <div class="wrapper">
-
   @include('components.sidebar')
-
   <div class="main-panel">
-
     @include('components.topbar')
-
     <div class="content">
       <div class="container-fluid">
         <div class="row no-gutter">
