@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Barangs;
 use App\Models\KodeBarang;
+use App\Models\PenerimaanBarang;
+use App\Models\PengeluaranBarang;
 
 class BarangController extends Controller
 {
@@ -52,21 +54,24 @@ class BarangController extends Controller
         $validatedData = $request->validate([
             'nama_barang' => 'required',
             'kode_barang' => 'required',
-            'harga' => 'required|numeric',
-            'quantity' => 'required|numeric',
-            'quantity_pack' => 'required|numeric',
-            'status' => 'required|numeric',
+            'deskripsi' => 'required',
+            'harga' => 'required',
+            'kategori' => 'required',
+            'satuan' => 'required',
+            'stock' => 'required',
         ]);
+
         try {
             // Create a new instance of the model
             $model = new Barangs();
             // Assign values from the validated request data to the model's properties
             $model->nama_barang = $validatedData['nama_barang'];
             $model->kode_barang = $validatedData['kode_barang'];
+            $model->deskripsi = $validatedData['deskripsi'];
             $model->harga = $validatedData['harga'];
-            $model->quantity = $validatedData['quantity'];
-            $model->quantity_pack = $validatedData['quantity_pack'];
-            $model->status = $validatedData['status'];
+            $model->kategori = $validatedData['kategori'];
+            $model->satuan = $validatedData['satuan'];
+            $model->stock = $validatedData['stock'];
             $model->save();
             // Set success message
             $message = 'Product code inserted successfully';
@@ -78,6 +83,75 @@ class BarangController extends Controller
         return back()->with('pesanBarang', $message);
     }
 
+    public function postPenerimaanBarang(Request $request)
+    {
+        // Validate the request data
+        $validatedData = $request->validate([
+            'barang_id' => 'required',
+            'no_penerimaan' => 'required',
+            'tanggal_penerimaan' => 'required',
+            'jumlah' => 'required'
+        ]);
+
+        try {
+            // Create a new instance of the model
+            $model = new PenerimaanBarang();
+            // Assign values from the validated request data to the model's properties
+            $model->barang_id = $validatedData['barang_id'];
+            $model->no_penerimaan = $validatedData['no_penerimaan'];
+            $model->tanggal_penerimaan = $validatedData['tanggal_penerimaan'];
+            $model->jumlah = $validatedData['jumlah'];
+
+            $barang = Barangs::find($model->barang_id = $validatedData['barang_id']);
+            $barang::where('id', $model->barang_id = $validatedData['barang_id'])->increment('stock',  $model->jumlah = $validatedData['jumlah']);
+
+            $model->save();
+            // Set success message
+            $message = 'Sukses input peneriman barang';
+        } catch (\Exception $e) {
+            // Set error message
+            $message = 'Error inserting product code: ' . $e->getMessage();
+        }
+        // Save the model to insert the data
+        return back()->with('penerimaanBarang', $message);
+    }
+
+
+    public function postPengeluaranBarang(Request $request)
+    {
+        // Validate the request data
+        $validatedData = $request->validate([
+            'barang_id' => 'required',
+            'no_pengeluaran' => 'required',
+            'tanggal_pengeluaran' => 'required',
+            'jumlah' => 'required'
+        ]);
+
+        try {
+            // Create a new instance of the model
+            $model = new PengeluaranBarang();
+            // Assign values from the validated request data to the model's properties
+            $model->barang_id = $validatedData['barang_id'];
+            $model->no_pengeluaran = $validatedData['no_pengeluaran'];
+            $model->tanggal_pengeluaran = $validatedData['tanggal_pengeluaran'];
+            $model->jumlah = $validatedData['jumlah'];
+
+            $barang = Barangs::find($model->barang_id = $validatedData['barang_id']);
+
+            $barang::where('id', $model->barang_id = $validatedData['barang_id'])->decrement('stock',  $model->jumlah = $validatedData['jumlah']);
+
+            $model->save();
+            // Set success message
+            $message = 'Sukses input pengeluaran barang';
+        } catch (\Exception $e) {
+            // Set error message
+            $message = 'Error inserting product code: ' . $e->getMessage();
+        }
+        // Save the model to insert the data
+        return back()->with('pengeluaranBarang', $message);
+    }
+
+
     public function editBarang(Request $request, string $id)
     {
         $barang = Barangs::find($id);
@@ -87,7 +161,7 @@ class BarangController extends Controller
             abort(404, 'Barang not found');
         }
 
-        return view('pages/dashboard_barang_edit', ['title' => "edit barang", 'barang' => $barang]);
+        return view('pages/barang/dashboard_barang_edit', ['title' => "edit barang", 'barang' => $barang]);
     }
 
     public function aksiEditBarang(Request $request, $id)
@@ -105,16 +179,16 @@ class BarangController extends Controller
         $validatedData = $request->validate([
             'nama_barang' => 'required',
             'kode_barang' => 'required',
+            'deskripsi' => 'required',
             'harga' => 'required',
-            'quantity' => 'required',
-            'quantity_pack' => 'required',
-            'status' => 'required',
+            'kategori' => 'required',
+            'satuan' => 'required',
+            'stock' => 'required',
         ]);
 
         try {
             // Update the barang data using the validated request data
             $barang->update($validatedData);
-
             // Set success message
             $message = 'Barang updated successfully';
         } catch (\Exception $e) {

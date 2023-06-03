@@ -26,7 +26,7 @@
                                 Total Barang
                             </div>
                             <div class="panel-body">
-                                $100,000
+                                {{ count($barang) }}
                                 <!-- Replace with dynamic value -->
                             </div>
                         </div>
@@ -34,10 +34,10 @@
                     <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Total Users
+                                Penerimaan Barang
                             </div>
                             <div class="panel-body">
-                                500
+                               {{ $penerimaan }}
                                 <!-- Replace with dynamic value -->
                             </div>
                         </div>
@@ -45,27 +45,29 @@
                     <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Total Revenue (This Month)
+                                Pengeluaran Barang
                             </div>
                             <div class="panel-body">
-                                $10,000
+                                {{ $pengeluaran }}
                                 <!-- Replace with dynamic value -->
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-top: 20px;">
+                <div class="row card" style="margin-top: 20px; padding:20px; ">
                     <div class="col-lg-12 table-barang">
                         <table id="example" class="table table-striped table-bordered " style="width:100%">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Kode barang</th>
                                     <th>Nama barang</th>
+                                    <th>Kode barang</th>
+                                    <th>Deskripsi</th>
                                     <th>Harga</th>
-                                    <th>Kategory</th>
+                                    <th>Kategori</th>
+                                    <th>Satuan</th>
                                     <th>Stock</th>
-                                    <th>Status</th>
+                                  
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,30 +79,19 @@
                                     <td>{{ $counter }}</td>
                                     <td>{{ $b->nama_barang }}</td>
                                     <td>{{ $b->kode_barang }}</td>
+                                    <td>{{ $b->deskripsi }}</td>
                                     <td>{{ $b->harga }}</td>
-                                    <td>{{ $b->quantity }}</td>
-                                    <td>{{ $b->quantity_pack }}</td>
-                                    @if ($b->status == 1)
-                                    <td><span class="badge">Masuk</span></td>
-                                    @endif
-
+                                    <td>{{ $b->kategori}}</td>
+                                    <td>{{ $b->satuan }}</td>
+                                    <td>{{ $b->stock }}</td>
+                                   
                                 </tr>
                                 @php
                                 $counter++;
                                 @endphp
                                 @endforeach
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                    <th>Status</th>
-                                </tr>
-                            </tfoot>
+                            
                         </table>
                     </div>
                 </div>

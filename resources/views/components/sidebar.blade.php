@@ -1,8 +1,8 @@
 <div class="sidebar">
   <div class="sidebar-wrapper">
     <div class="logo text-center">
-      <img src="https://diskominfo.karanganyarkab.go.id/wp-content/uploads/2018/03/LOGO-KARANGANYAR.png" alt="" height="100">
-      <a href="#" class="simple-text">
+      <img src="/assets/img/GBlogo.png" alt="" height="200">
+      <a href="/dashboard" class="simple-text">
         INVENTORY GUDANG
       </a>
     </div>
@@ -14,9 +14,15 @@
         </a>
       </li>
       <li class="active">
-        <a href="/dashboard-kategori">
+        <a href="/dashboard-penerimaan-barang">
           <i class="fa fa-list-alt" aria-hidden="true"></i>
-          <p>Kategori</p>
+          <p>Penerimaan Barang</p>
+        </a>
+      </li>
+      <li class="active">
+        <a href="/dashboard-pengeluaran-barang">
+          <i class="fa fa-edit" aria-hidden="true"></i>
+          <p>Penegeluaran Barang</p>
         </a>
       </li>
       <li class="active">
@@ -40,7 +46,7 @@
       <li class="active">
         <a href="/dashboard-users">
           <i class="fa fa-users" aria-hidden="true"></i>
-          <p>Users</p>
+          <p>Pelanggan</p>
         </a>
       </li>
     </ul>

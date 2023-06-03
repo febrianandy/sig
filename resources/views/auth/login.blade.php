@@ -25,7 +25,7 @@
       <div class="col-md-6 col-md-offset-3">
         <form action="/login" class="login-form" method="post">
           @csrf
-          <h2 class="text-center" style="margin-bottom: 30px;">GASSA INVENTORY</h2>
+          <h2 class="text-center" style="margin-bottom: 30px;">GH-INVENTORY</h2>
           <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">

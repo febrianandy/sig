@@ -1,5 +1,39 @@
 @include('partials.header')
-
+{{-- <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Barang Keluar</h4>
+        </div>
+        <div class="modal-body">
+          <p><form method="POST" action="simpan_barang.php">
+            <div>
+                <label for="nama">Nama Barang:</label>
+                <input type="text" id="nama" name="nama" required>
+            </div>
+            <div>
+                <label for="nama">Kode Barang:</label>
+                <input type="text" id="nama" name="nama" required>
+            </div>
+            <div>
+                <label for="harga">Stok:</label>
+                <input type="number" id="harga" name="harga" required>
+            </div>
+        </form></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   --}}
+<x-modal/>
 <div class="wrapper">
 
     @include('components.sidebar')
@@ -25,12 +59,13 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Kode barang</th>
                                     <th>Nama barang</th>
+                                    <th>Kode barang</th>
+                                    <th>Deskripsi</th>
                                     <th>Harga</th>
-                                    <th>Kategory</th>
+                                    <th>Kategori</th>
+                                    <th>Satuan</th>
                                     <th>Stock</th>
-                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -43,38 +78,27 @@
                                     <td>{{ $counter }}</td>
                                     <td>{{ $b->nama_barang }}</td>
                                     <td>{{ $b->kode_barang }}</td>
+                                    <td>{{ $b->deskripsi }}</td>
                                     <td>{{ $b->harga }}</td>
-                                    <td>{{ $b->quantity }}</td>
-                                    <td>{{ $b->quantity_pack }}</td>
-                                    @if ($b->status == 1)
-                                    <td><span class="badge">Masuk</span></td>
-                                    @endif
-                                    <td style="display:flex;">
-                                        <a href="/dashboard-barang-edit/{{ $b->id }}" class="btn btn-primary">Edit</a>
+                                    <td>{{ $b->kategori}}</td>
+                                    <td>{{ $b->satuan }}</td>
+                                    <td>{{ $b->stock }}</td>
+                                    <td style="display:flex; justify-content: center; gap: 5px">
+                                        <a href="/dashboard-barang-edit/{{ $b->id }}" class="btn btn-primary" >Edit</a>
                                         <form action="/dashboard-barang-delete/{{ $b->id }}" method="POST">
                                             @csrf
                                             @method("delete")
                                             <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">Hapus</button>
                                         </form>
-                                    </td>
+                                        {{-- <button  class="btn btn-success" data-toggle="modal" data-target="#myModal">Out</button> --}}
+                                    </td>   
                                 </tr>
                                 @php
                                 $counter++;
                                 @endphp
                                 @endforeach
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </tfoot>
+                            
                         </table>
                     </div>
                 </div>
@@ -82,5 +106,6 @@
         </div>
         @include('components/footer')
     </div>
+    {{-- @include('components.modal.modal_barangKeluar') --}}
 </div>
 @include('partials/footer')
