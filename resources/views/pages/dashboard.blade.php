@@ -26,7 +26,7 @@
                                 Total Barang
                             </div>
                             <div class="panel-body">
-                                {{ count($barang) }}
+                                70
                                 <!-- Replace with dynamic value -->
                             </div>
                         </div>
@@ -34,10 +34,10 @@
                     <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Penerimaan Barang
+                                Barang Terjual
                             </div>
                             <div class="panel-body">
-                               {{ $penerimaan }}
+                                24
                                 <!-- Replace with dynamic value -->
                             </div>
                         </div>
@@ -45,16 +45,27 @@
                     <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Pengeluaran Barang
+                                Barang Expired
                             </div>
                             <div class="panel-body">
-                                {{ $pengeluaran }}
+                                5
                                 <!-- Replace with dynamic value -->
                             </div>
                         </div>
                     </div>
+                    {{-- <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Users
+                            </div>
+                            <div class="panel-body">
+                                4
+                                <!-- Replace with dynamic value -->
+                            </div>
+                        </div>
+                    </div> --}}
                 </div>
-                <div class="row card" style="margin-top: 20px; padding:20px; ">
+                <div class="row" style="margin-top: 20px;">
                     <div class="col-lg-12 table-barang">
                         <table id="example" class="table table-striped table-bordered " style="width:100%">
                             <thead>
@@ -67,7 +78,6 @@
                                     <th>Kategori</th>
                                     <th>Satuan</th>
                                     <th>Stock</th>
-                                  
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,8 +93,7 @@
                                     <td>{{ $b->harga }}</td>
                                     <td>{{ $b->kategori}}</td>
                                     <td>{{ $b->satuan }}</td>
-                                    <td>{{ $b->stock }}</td>
-                                   
+                                    <td>{{ $b->stock }}</td>   
                                 </tr>
                                 @php
                                 $counter++;

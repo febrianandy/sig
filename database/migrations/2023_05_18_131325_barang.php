@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('kode_barang');
             $table->string('deskripsi');
             $table->integer('harga');
-            $table->integer('kategori');
+            $table->string('kategori');
             $table->enum('satuan', ['ecer', 'pack']);
             $table->integer('stock');
             $table->timestamps();

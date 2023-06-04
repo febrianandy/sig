@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('penerimaan_barang', function (Blueprint $table) {
             $table->id();
             $table->string('no_penerimaan');
-            $table->integer('tanggal_penerimaan');
+            $table->date('tanggal_penerimaan');
             $table->integer('barang_id');
             $table->integer('jumlah');
             $table->timestamps();

@@ -28,7 +28,9 @@
                   @endforeach
                 </select>
                 @error('barang_id')
-                <div class="alert alert-danger">{{ $message }}</div>
+                 <small id="passwordHelp" class="text-danger">
+                  {{ $message }}
+                </small>
                 @enderror
               </div>
               <div class="form-group">
@@ -36,7 +38,9 @@
                 <input type="text" class="form-control" id="barang-name" name="no_pengeluaran"
                   value="{{ old('no_pengeluaran') }}" placeholder="Enter the name of the item">
                 @error('no_pengeluaran')
-                <div class="alert alert-danger">{{ $message }}</div>
+                 <small id="passwordHelp" class="text-danger">
+                  {{ $message }}
+                </small>
                 @enderror
               </div>
               <div class="form-group">
@@ -44,7 +48,9 @@
                 <input type="date" class="form-control" name="tanggal_pengeluaran"
                   value="{{ old('tanggal_pengeluaran') }}" placeholder="Enter the price of the item">
                 @error('tanggal_pengeluaran')
-                <div class="alert alert-danger">{{ $message }}</div>
+                 <small id="passwordHelp" class="text-danger">
+                  {{ $message }}
+                </small>
                 @enderror
               </div>
               <div class="form-group">
@@ -52,10 +58,12 @@
                 <input type="number" class="form-control" name="jumlah" value="{{ old('jumlah') }}"
                   placeholder="Enter the price of the item">
                 @error('jumlah')
-                <div class="alert alert-danger">{{ $message }}</div>
+                 <small id="passwordHelp" class="text-danger">
+                  {{ $message }}
+                </small>
                 @enderror
               </div>
-              <button>Submit</button>
+              <button class="btn btn-warning">Tambah Pengeluaran</button>
             </form>
 
           </div>
