@@ -17,9 +17,9 @@
         </div>
         <div class="row">
           <div class="col-md-6">
-            @if (session('pesanBarang'))
+            @if (session('errorEditBarang'))
             <div class="alert alert-info">
-              {{ session('pesanBarang') }}
+              {{ session('errorEditBarang') }}
             </div>
             @endif
             <form action="/dashboard-barang-edit/{{ $barang->id }}" method="POST">
@@ -49,7 +49,7 @@
               </div>
               <div class="form-group">
                 <label for="barang-deskripsi">Deskripsi:</label>
-                <input type="text" class="form-control" id="barang-price" min="0" name="deskripsi"
+                <input type="text" class="form-control" id="barang-price" name="deskripsi"
                   value="{{ $barang->deskripsi }}" placeholder="Enter the price of the item">
                 @error('deskripsi')
                 <small id="passwordHelp" class="text-danger">
@@ -60,7 +60,7 @@
               </div>
               <div class="form-group">
                 <label for="barang-price">Harga:</label>
-                <input type="number" class="form-control" id="barang-price" min="0" name="harga"
+                <input type="number" class="form-control" id="barang-price" name="harga"
                   value="{{ $barang->harga }}" placeholder="Enter the price of the item">
                 @error('harga')
                 <small id="passwordHelp" class="text-danger">
@@ -71,7 +71,7 @@
               </div>
               <div class="form-group">
                 <label for="barang-deskripsi">Kategori:</label>
-                <input type="text" class="form-control" id="barang-price" min="0" name="kategori"
+                <input type="text" class="form-control" id="barang-price"  name="kategori"
                   value="{{ $barang->kategori }}" placeholder="Enter the price of the item">
                 @error('kategori')
                 <small id="passwordHelp" class="text-danger">
@@ -82,7 +82,7 @@
               </div>
               <div class="form-group">
                 <label for="barang-deskripsi">Satuan:</label>
-                <input type="text" class="form-control" id="barang-price" min="0" name="satuan"
+                <input type="text" class="form-control" id="barang-price" name="satuan"
                   value="{{ $barang->satuan }}" placeholder="Enter the price of the item">
                 @error('satuan')
                 <small id="passwordHelp" class="text-danger">

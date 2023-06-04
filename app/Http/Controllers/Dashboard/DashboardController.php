@@ -18,7 +18,10 @@ class DashboardController extends Controller
     {
         $this->barang = new Barangs();
     }
-    
+    public function index(){
+        $data = $this->barang->all();
+        return view('pages/index', ['barang' => $data]);
+    }
     public function dashboard()
     {
         $data = $this->barang->all();
@@ -53,7 +56,11 @@ class DashboardController extends Controller
         // Render the HTML as PDF
         $pdf->render();
         // Output the generated PDF to the browser
-        $pdf->stream('penerimaanbarang.pdf');
+        $pdf->stream('penerimaanbarang.pdf', [
+            'compress' => true,
+            'Attachment' => true,
+        ]);
+        exit();
     }
 
     public function exportPDFpengeluaran(Request $request)
@@ -81,7 +88,11 @@ class DashboardController extends Controller
         // Render the HTML as PDF
         $pdf->render();
         // Output the generated PDF to the browser
-        $pdf->stream('pengeluaranbarang.pdf');
+        $pdf->stream('pengeluaranbarang.pdf', [
+            'compress' => true,
+            'Attachment' => true,
+        ]);
+        exit();
     }
 
     public function penerimaan_barang()

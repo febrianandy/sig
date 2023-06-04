@@ -64,6 +64,7 @@ class BarangController extends Controller
         $validatedData = $request->validate([
             'barang_id' => 'required',
             'no_penerimaan' => 'required',
+            'kode_barang' => 'required',
             'tanggal_penerimaan' => 'required',
             'jumlah' => 'required'
         ]);
@@ -74,11 +75,22 @@ class BarangController extends Controller
             // Assign values from the validated request data to the model's properties
             $model->barang_id = $validatedData['barang_id'];
             $model->no_penerimaan = $validatedData['no_penerimaan'];
+            $model->kode_barang = $validatedData['kode_barang'];
             $model->tanggal_penerimaan = $validatedData['tanggal_penerimaan'];
             $model->jumlah = $validatedData['jumlah'];
 
-            $barang = Barangs::find($model->barang_id = $validatedData['barang_id']);
-            $barang::where('id', $model->barang_id = $validatedData['barang_id'])->increment('stock',  $model->jumlah = $validatedData['jumlah']);
+
+            $barang = Barangs::where([
+                ['id', $validatedData['barang_id']],
+                ['kode_barang', $validatedData['kode_barang']]
+            ])->first();
+            
+            if ($barang) {
+                $barang->stock += $validatedData['jumlah'];
+                $barang->save();
+            } else {
+                echo "error";
+            }
 
             $model->save();
             // Set success message
@@ -98,6 +110,7 @@ class BarangController extends Controller
         $validatedData = $request->validate([
             'barang_id' => 'required',
             'no_pengeluaran' => 'required',
+            'kode_barang' => 'required',
             'tanggal_pengeluaran' => 'required',
             'jumlah' => 'required'
         ]);
@@ -108,12 +121,22 @@ class BarangController extends Controller
             // Assign values from the validated request data to the model's properties
             $model->barang_id = $validatedData['barang_id'];
             $model->no_pengeluaran = $validatedData['no_pengeluaran'];
+            $model->kode_barang = $validatedData['kode_barang'];
             $model->tanggal_pengeluaran = $validatedData['tanggal_pengeluaran'];
             $model->jumlah = $validatedData['jumlah'];
 
-            $barang = Barangs::find($model->barang_id = $validatedData['barang_id']);
 
-            $barang::where('id', $model->barang_id = $validatedData['barang_id'])->decrement('stock',  $model->jumlah = $validatedData['jumlah']);
+            $barang = Barangs::where([
+                ['id', $validatedData['barang_id']],
+                ['kode_barang', $validatedData['kode_barang']]
+            ])->first();
+            
+            if ($barang) {
+                $barang->stock -= $validatedData['jumlah'];
+                $barang->save();
+            } else {
+                echo "error";
+            }
 
             $model->save();
             // Set success message
@@ -169,7 +192,7 @@ class BarangController extends Controller
         }
 
         // Redirect back with success message
-        return redirect()->back()->with('pesanBarang', $message);
+        return redirect()->back()->with('errorEditBarang', $message);
     }
 
     public function deleteBarang($id)

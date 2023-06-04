@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\BarangController;
 use App\Http\Controllers\Dashboard\DashboardController;
-
+use App\Http\Controllers\Dashboard\PelangganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +17,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth/login');
-});
+Route::get('/', [DashboardController::class,'index']);
 
 Route::middleware('auth')->group(function () {
 
@@ -30,7 +28,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard-barang', 'barang');
         Route::get('/dashboard-input-barang', 'pageInputBarang');
         Route::get('/dashboard-laporan', 'pageLaporan');
-        Route::get('/dashboard-users', 'pageUsers');
         Route::post('/dashboard-laporan-penerimaan', 'exportPDFpenerimaan');
         Route::post('/dashboard-laporan-pengeluaran', 'exportPDFpengeluaran');
         Route::post('/dashboard-logout', 'logout')->name('logout');
@@ -44,6 +41,15 @@ Route::middleware('auth')->group(function () {
         Route::get("/dashboard-barang-edit/{id}", 'editBarang');
         Route::delete("/dashboard-barang-delete/{id}", 'deleteBarang');
         Route::put("/dashboard-barang-edit/{id}", 'aksiEditBarang');
+    });
+
+    Route::controller(PelangganController::class)->group(function(){
+        Route::get('/dashboard-users', 'index');
+        Route::get('/dashboard-users-tambah', 'tambah');
+        Route::post('/dashboard-users-tambah', 'create');
+        Route::delete('/dashboard-user-delete/{id}', 'destroy');
+        Route::get('/dashboard-user-edit/{id}', 'edit');
+        Route::put('/dashboard-user-edit/{id}', 'update');
     });
 });
 

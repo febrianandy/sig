@@ -34,6 +34,19 @@
                 @enderror
               </div>
               <div class="form-group">
+                <label for="barang-name">Kode Barang:</label>
+                <select class="form-control" name="kode_barang" id="">
+                  @foreach($barang as $b)
+                  <option value="{{ $b->kode_barang}}">{{ $b->kode_barang}}</option>
+                  @endforeach
+                </select>
+                @error('barang_id')
+                <small id="passwordHelp" class="text-danger">
+                  {{ $message }}
+                </small>
+                @enderror
+              </div>
+              <div class="form-group">
                 <label for="category">No Pengeluaran:</label>
                 <input type="text" class="form-control" id="barang-name" name="no_pengeluaran"
                   value="{{ old('no_pengeluaran') }}" placeholder="Enter the name of the item">

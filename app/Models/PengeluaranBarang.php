@@ -33,6 +33,7 @@ class PengeluaranBarang extends Model
         'id',
         'barang_id',
         'no_pengeluaran',
+        'kode_barang',
         'tanggal_pengeluaran',
         'jumlah',
         'created_at',

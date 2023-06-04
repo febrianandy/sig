@@ -33,6 +33,7 @@ class PenerimaanBarang extends Model
         'id',
         'barang_id',
         'no_penerimaan',
+        'kode_barang',
         'tanggal_penerimaan',
         'jumlah',
         'created_at',
