@@ -17,6 +17,28 @@
 <script>
   $(document).ready(function () {
     $('#example').DataTable();
-});
+  });
+
+  async function changeValue(){
+    var selectElement = document.getElementById("id_barang");
+    var kode_barang = document.getElementById('kode_barang');
+    var id = selectElement.value;
+
+    try {
+      const response = await fetch(`http://127.0.0.1:8000/api/get-kode-barang/${id}`);
+      if (!response.ok) {
+
+        console.log("error")
+      }
+      const data = await response.json();
+      document.getElementById('kode_barang').value = data.kode_barang;
+   
+    } catch (error) {
+      // Handle any errors that occurred during the API request
+      console.error('Error:', error);
+    }
+
+  }
 </script>
+
 </html>

@@ -23,6 +23,8 @@ class BarangController extends Controller
         return view('barang.index', ['data' => $data]);
     }
 
+  
+
     public function postBarang(Request $request)
     {
         // Validate the request data
@@ -69,6 +71,7 @@ class BarangController extends Controller
             'jumlah' => 'required'
         ]);
 
+
         try {
             // Create a new instance of the model
             $model = new PenerimaanBarang();
@@ -78,6 +81,7 @@ class BarangController extends Controller
             $model->kode_barang = $validatedData['kode_barang'];
             $model->tanggal_penerimaan = $validatedData['tanggal_penerimaan'];
             $model->jumlah = $validatedData['jumlah'];
+
 
 
             $barang = Barangs::where([
@@ -98,6 +102,7 @@ class BarangController extends Controller
         } catch (\Exception $e) {
             // Set error message
             $message = 'Error inserting product code: ' . $e->getMessage();
+            echo $message;
         }
         // Save the model to insert the data
         return back()->with('penerimaanBarang', $message);

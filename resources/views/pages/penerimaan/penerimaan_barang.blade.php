@@ -22,7 +22,8 @@
               @csrf
               <div class="form-group">
                 <label for="barang-name">Nama Barang:</label>
-                <select class="form-control" name="barang_id" id="">
+                <select class="form-control" name="barang_id" id="id_barang" onchange="changeValue()">
+                  <option value="">Pilih Barang</option>
                   @foreach($barang as $b)
                   <option value="{{ $b->id}}">{{ $b->nama_barang}}</option>
                   @endforeach
@@ -35,12 +36,8 @@
               </div>
               <div class="form-group">
                 <label for="barang-name">Kode Barang:</label>
-                <select class="form-control" name="kode_barang" id="">
-                  @foreach($barang as $b)
-                  <option value="{{ $b->kode_barang}}">{{ $b->kode_barang}}</option>
-                  @endforeach
-                </select>
-                @error('barang_id')
+                <input type="text" value="" name="kode_barang" id="kode_barang" class="form-control" readonly="readonly">
+                @error('kode_barang')
                 <small id="passwordHelp" class="text-danger">
                   {{ $message }}
                 </small>

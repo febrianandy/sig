@@ -53,17 +53,7 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="col-md-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Users
-                            </div>
-                            <div class="panel-body">
-                                4
-                                <!-- Replace with dynamic value -->
-                            </div>
-                        </div>
-                    </div> --}}
+        
                 </div>
                 <div class="row" style="margin-top: 20px;">
                     <div class="col-lg-12 table-barang">
