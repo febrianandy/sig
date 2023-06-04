@@ -26,7 +26,7 @@
                                 Total Barang
                             </div>
                             <div class="panel-body">
-                                70
+                                {{ count($barang) }}
                                 <!-- Replace with dynamic value -->
                             </div>
                         </div>
@@ -34,10 +34,10 @@
                     <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Barang Terjual
+                                Pernerimaan 
                             </div>
                             <div class="panel-body">
-                                24
+                                {{ $penerimaan }}
                                 <!-- Replace with dynamic value -->
                             </div>
                         </div>
@@ -45,10 +45,10 @@
                     <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Barang Expired
+                                Pengeluaran
                             </div>
                             <div class="panel-body">
-                                5
+                               {{ $pengeluaran }}
                                 <!-- Replace with dynamic value -->
                             </div>
                         </div>
